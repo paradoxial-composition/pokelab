@@ -1,0 +1,5 @@
+{
+	"name": "PokeCard-container",
+	"version": "0.0.1",
+	"main": "./PokeCardContainer.js"
+}
