@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import './PokeCard.scss';
-import { Card, Tag, Image, Modal } from 'antd';
+import { Card, Tag,  Modal } from 'antd';
+import PokeDetails from '../PokeDetails';
 
 const { Meta } = Card;
-const types = {
+const typeColors = {
 	fire: '#f50',
 	dragon: '#531dab'
 }
 let PokeCard = ({pokeInfo}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
-	const pokeImg = 'https://pokeres.bastionbot.org/images/pokemon/' + pokeInfo.pokeId + '.png'
+	const pokeImg = 'https://pokeres.bastionbot.org/images/pokemon/' + pokeInfo.id + '.png'
 
 	let lpad = (value, padding) => {
 		var zeroes = new Array(padding+1).join("0");
@@ -18,28 +19,28 @@ let PokeCard = ({pokeInfo}) => {
 
 	let tags = []
 	pokeInfo.pokeTypes.map((item, index) => {
-		tags.push(<Tag key={index} color={types[item]}>{item}</Tag>)
+		tags.push(<Tag key={index} color={typeColors[item.type.name]}>{item.type.name}</Tag>)
 	})
 	return (
 		<React.Fragment>
 			<Card
 				hoverable
 				style={{ width: 240, margin: 'auto' }}
-				cover={<Image src={pokeImg}/>}
+				cover={<img src={pokeImg} alt={pokeInfo.pokeName}/>}
 				onClick={() => {setIsModalVisible(true)}}
 			>
 				<span>{'#'+ lpad(pokeInfo.pokeId, 3)}</span>
-				<Meta title={pokeInfo.pokeName}/>
+				<Meta title={pokeInfo.name}/>
 				{tags}
 			</Card>
-			<Modal title={'#' + lpad(pokeInfo.pokeId, 3) + ' ' + pokeInfo.pokeName} 
+			<Modal
 				visible={isModalVisible} 
 				footer={null} 
 				closable={false} 
 				maskClosable={true}
 				onCancel={() => {setIsModalVisible(false)}}
 			>
-				<p>PokeDetails</p>
+				<PokeDetails pokeInfo={pokeInfo}/>
 			</Modal>
 		</React.Fragment>
 		);

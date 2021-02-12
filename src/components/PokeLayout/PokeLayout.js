@@ -6,18 +6,13 @@ import {Row, Col, Layout} from 'antd';
 const {Content} = Layout;
 
 let PokeLayout = () => {
-	let pokeInfo = {
-		pokeId: '4',
-		pokeName: 'Charmander',
-		pokeTypes: ['fire', 'dragon'],
-	}
 	let cards = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 	
 	let Pokecards = []
 	cards.map( (item, index) => {
 		Pokecards.push(
 			<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
-				<PokeCard  pokeInfo={pokeInfo}/>
+				<PokeCard  pokeId={4}/>
 			</Col>
 		)
 	})
