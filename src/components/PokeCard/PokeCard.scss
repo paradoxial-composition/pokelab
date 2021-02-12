@@ -1,0 +1,14 @@
+
+.poke-card {
+    width: 240px;
+    margin: auto;
+    border-radius: 25px;
+    background: transparent;
+    .ant-card-body {
+        background: white;
+        border-radius: 25px;
+    }
+}
+.poke-tag {
+    border-radius: 25px;
+}

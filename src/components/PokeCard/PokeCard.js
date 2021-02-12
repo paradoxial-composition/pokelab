@@ -10,7 +10,6 @@ const typeColors = {
 }
 let PokeCard = ({pokeInfo}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
-	const pokeImg = 'https://pokeres.bastionbot.org/images/pokemon/' + pokeInfo.id + '.png'
 
 	let lpad = (value, padding) => {
 		var zeroes = new Array(padding+1).join("0");
@@ -19,14 +18,14 @@ let PokeCard = ({pokeInfo}) => {
 
 	let tags = []
 	pokeInfo.pokeTypes.map((item, index) => {
-		tags.push(<Tag key={index} color={typeColors[item.type.name]}>{item.type.name}</Tag>)
+		tags.push(<Tag className="poke-tag" key={index} color={typeColors[item.type.name]}>{item.type.name}</Tag>)
 	})
 	return (
 		<React.Fragment>
 			<Card
 				hoverable
-				style={{ width: 240, margin: 'auto' }}
-				cover={<img src={pokeImg} alt={pokeInfo.pokeName}/>}
+				className="poke-card"
+				cover={<img src={pokeInfo.sprites.other['official-artwork'].front_default} alt={pokeInfo.pokeName}/>}
 				onClick={() => {setIsModalVisible(true)}}
 			>
 				<span>{'#'+ lpad(pokeInfo.pokeId, 3)}</span>
