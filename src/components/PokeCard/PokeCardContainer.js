@@ -3,23 +3,7 @@ import axios from 'axios';
 import PokeCard from './PokeCard';
 
 let PokeCardContainer = (props) => {
-	// fetch request lvl 2
-	// let [cardInfo, setCardInfo] = useState({})
-	// let [cardLoading, setCardLoading] = useState(true)
-	// console.log(props.pokeCardPayload.url)
-	// useEffect( () => {
-	// 	axios.get(props.pokeCardPayload.url)
-	// 	  .then(res => {
-	// 		  console.log(res)
-	// 		  setCardInfo(res.data)
-	// 	  })
-	// 	  .finally(() => { 
-	// 		console.log(cardInfo)
-	// 		setCardLoading(false)
-	// 	  })
-	//   }, [])
-
-	 
+	// fetch request lvl 2	 
 
 	let pokeInfo = {
 		id: '4',
@@ -58,7 +42,7 @@ let PokeCardContainer = (props) => {
 	let methods = {
 		...props,
 		pokeInfo,
-		cardLoading
+		// cardLoading
 	}
 	return (
 		<PokeCard {...methods} />
