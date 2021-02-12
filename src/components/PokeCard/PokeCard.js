@@ -8,7 +8,7 @@ const typeColors = {
 	fire: '#f50',
 	dragon: '#531dab'
 }
-let PokeCard = ({pokeInfo}) => {
+let PokeCard = ({pokeInfo, loading}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
 
 	let lpad = (value, padding) => {
@@ -24,8 +24,11 @@ let PokeCard = ({pokeInfo}) => {
 		<React.Fragment>
 			<Card
 				hoverable
+				loading={loading}
 				className="poke-card"
-				cover={<img src={pokeInfo.sprites.other['official-artwork'].front_default} alt={pokeInfo.pokeName}/>}
+				cover={<img 
+					src={(loading) ? 'https://i.pinimg.com/originals/02/c7/05/02c70572482476ba3ec8c4962f883705.png' : pokeInfo.sprites.other['official-artwork'].front_default} 
+					alt={pokeInfo.pokeName}/>}
 				onClick={() => {setIsModalVisible(true)}}
 			>
 				<span>{'#'+ lpad(pokeInfo.pokeId, 3)}</span>

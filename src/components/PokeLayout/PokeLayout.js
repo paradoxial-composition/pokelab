@@ -1,18 +1,18 @@
 import React from 'react';
 import './PokeLayout.scss';
 import PokeCard from '../PokeCard';
-import {Row, Col, Layout} from 'antd';
+import Loading from '../Loading/Loading';
+import {Row, Col, Layout, Modal} from 'antd';
 
 const {Header, Content, Footer} = Layout;
 
-let PokeLayout = () => {
-	let cards = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+let PokeLayout = ({cards, pokeData, loading, timer}) => {
 	
 	let Pokecards = []
-	cards.map( (item, index) => {
+	pokeData.map( (item, index) => {
 		Pokecards.push(
 			<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
-				<PokeCard  pokeId={4}/>
+				<PokeCard  pokeId={4} loading={loading}/>
 			</Col>
 		)
 	})
@@ -25,9 +25,14 @@ let PokeLayout = () => {
 				/>
 			</Header>
 			<Content className="poke-content">
+				
 				<Row justify="space-around" align="middle" gutter={[4,48]} >
 					{Pokecards}
 				</Row>
+				
+				{loading &&
+				<Loading time={timer} loading={loading}/>
+				}
 			</Content>
 			<Footer className="poke-footer">
 				<img 
