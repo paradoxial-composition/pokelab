@@ -6,13 +6,13 @@ import {Row, Col, Layout, Modal} from 'antd';
 
 const {Header, Content, Footer} = Layout;
 
-let PokeLayout = ({cards, pokeData, loading, timer}) => {
+let PokeLayout = ({pokeData, loading, timer}) => {
 	
 	let Pokecards = []
 	pokeData.map( (item, index) => {
 		Pokecards.push(
 			<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
-				<PokeCard  pokeId={4} loading={loading}/>
+				<PokeCard  pokeCardPayload={item} loading={loading}/>
 			</Col>
 		)
 	})

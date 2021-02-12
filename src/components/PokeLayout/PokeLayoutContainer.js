@@ -16,7 +16,6 @@ let PokeLayoutContainer = (props) => {
 			setPokeData(res.data.results)
 		  })
 		  .then(() => {
-			console.log(pokeData)
 			setTimeout( () => {
 				setLoading(false)
 			}, timer)

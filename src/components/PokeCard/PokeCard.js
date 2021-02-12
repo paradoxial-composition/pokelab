@@ -10,7 +10,6 @@ const typeColors = {
 }
 let PokeCard = ({pokeInfo, loading}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
-
 	let lpad = (value, padding) => {
 		var zeroes = new Array(padding+1).join("0");
 		return (zeroes + value).slice(-padding);
