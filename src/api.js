@@ -9,14 +9,33 @@ export default {
               }
           }).then(response => response.json())
             .catch((error) => {throw error})
-  },
-  getPokemonCardData(name){
-    return fetch(apiUrl + 'pokemon/' + name, {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-          }
-      }).then(response => response.json())
-        .catch((error) => {throw error})
-}
+    },
+    getTypes(){
+        return fetch(apiUrl + 'type/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .catch((error) => {throw error})
+    },
+    getPokemonCardData(name){
+        return fetch(apiUrl + 'pokemon/' + name, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .catch((error) => {throw error})
+    },
+    getFilteredByType(url){
+        console.log(url)
+        return fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .catch((error) => {throw error})
+    }
 }

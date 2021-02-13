@@ -9,7 +9,7 @@ let PokeDetails = ({pokeInfo}) => {
 
 	return (
 			<React.Fragment>
-				<Row gutter={[4,8]}>
+				<Row gutter={[4,8]} className="poke-details-wrapper">
 					<Col xs={24}>
 						<Image style={{ margin: 'auto' }} src={pokeInfo.sprites.other['official-artwork'].front_default}/>
 					</Col>

@@ -1,9 +1,11 @@
-.poke-card-details {
-    text-align: center;
-    border-radius: 25px;
-    box-shadow: 10px 5px 5px #bfbfbf;
-}
-span {
-    font-size: 24px;
-    font-weight: 600;
+.poke-details-wrapper{
+    .poke-card-details {
+        text-align: center;
+        border-radius: 25px;
+        box-shadow: 10px 5px 5px #bfbfbf;
+    }
+    span {
+        font-size: 24px;
+        font-weight: 600;
+    }
 }
