@@ -1,11 +1,9 @@
 import * as type from '../types';
 
 const initialState = {
-  pokemons: [],
-  
   types: [],
   pokemonCardInfo: [],
-  loading: false,
+  loading: true,
   error: null
 }
 
@@ -16,13 +14,7 @@ export default function pokemons(state = initialState, action){
         ...state,
         loading: true
       }
-    case type.GET_POKEMONS_SUCCESS:
-      return {
-        ...state,
-        pokemons: action.payload
-      }
     case type.GET_TYPES_SUCCESS:
-      console.log(state.pokemons)
       return {
         ...state,
         types: action.payload
@@ -30,8 +22,8 @@ export default function pokemons(state = initialState, action){
     case type.GET_POKEMON_CARD_INFO_SUCCESS:
       return {
         ...state,
-        loading: false,
-        pokemonCardInfo:[...state.pokemonCardInfo, ...action.payload] 
+        pokemonCardInfo:[...state.pokemonCardInfo, ...action.payload] ,
+        loading: false
       }
     case type.GET_POKEMONS_FAILED:
       return {
@@ -42,7 +34,7 @@ export default function pokemons(state = initialState, action){
     case type.CLEAR_POKEMONS:
       return {
         ...state,
-        pokemons: []
+        pokemonCardInfo: []
       }
     default: return state;
   }

@@ -18,14 +18,14 @@ const PokeLayout = () => {
 	const error = useSelector(state => state.pokemons.error)
 	
 	useEffect( () => {
-		dispatch(getPokemons({limit: 0}))
+		dispatch(getPokemons({offset: 0}))
 	}, [])
 
 	window.onscroll = () => {
 		let scrollPosition = window.innerHeight + window.scrollY
 		let scrollHeight = document.documentElement.scrollHeight
 		if(scrollPosition == scrollHeight) {
-			dispatch(getPokemons({limit: pokeCardData.length}))
+			dispatch(getPokemons({offset: pokeCardData.length}))
 		}
 	}
 
