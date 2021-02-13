@@ -3,9 +3,9 @@ import * as type from '../types';
 import Api from '../../api';
 import { getPokemonsSuccess, getPokemonsFailure, getPokemonCardInfoSuccess } from '../actions/pokemons';
 
-function* fetchPokemons () {
+function* fetchPokemons (action) {
   try{
-    const pokemons = yield call(Api.getPokemons)
+    const pokemons = yield call(Api.getPokemons, action.payload)
     yield put(getPokemonsSuccess(pokemons.results))
 
     const pokeCardData = yield all(pokemons.results.map( poke => call(Api.getPokemonCardData, poke.name)));

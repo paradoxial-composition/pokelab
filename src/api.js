@@ -1,8 +1,8 @@
 const apiUrl = 'https://pokeapi.co/api/v2/'
 
 export default {
-    getPokemons(){
-        return fetch(apiUrl + 'pokemon?offset=0&limit=10', {
+    getPokemons(pokeCount){
+        return fetch(apiUrl + 'pokemon?offset='+ pokeCount +'&limit=10', {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import {Row, Col, Layout, } from 'antd';
 
@@ -17,9 +17,17 @@ const PokeLayout = () => {
 	const error = useSelector(state => state.pokemons.error)
 	
 	useEffect( () => {
-		dispatch(getPokemons())
+		dispatch(getPokemons(0))
 	}, [])
 
+	window.onscroll = () => {
+		let scrollPosition = window.innerHeight + window.scrollY
+		let scrollHeight = document.documentElement.scrollHeight
+		if(scrollPosition == scrollHeight) {
+			dispatch(getPokemons(pokeCardData.length))
+		}
+
+	}
 	return (
 		<React.Fragment>
 			<Header className="poke-header">
@@ -36,6 +44,16 @@ const PokeLayout = () => {
 					</Col>
 					))}
 				</Row>
+				{loading && <Row justify="space-around" align="middle" >
+					<Col xs={24}>
+						<img 
+							src="https://64.media.tumblr.com/dd3f6857ecc417bfbea89bb8ed37a5f7/tumblr_ox6e6kF3HG1sox2ufo1_400.gifv"
+							alt="Loading .."
+							height="50px"
+						/>
+					</Col>
+				</Row>}
+				
 				
 				{loading &&
 				 <Loading loading={loading} error={error}/>
