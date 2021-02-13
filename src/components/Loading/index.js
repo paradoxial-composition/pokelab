@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Progress, Modal} from 'antd';
 
-let Loading = ({ time, loading}) => {
+let Loading = ({ loading, error}) => {
     let [precentValue, setPercentValue] = useState(0)
+    let [exception, setException] = useState('')
     useEffect( () => {
+        if(error) {
+            setException('exception')
+            setPercentValue(71)
+        }
         let intervalRef = setTimeout(() => {
             setPercentValue(precentValue + 1)
         }, 15)
@@ -22,7 +27,7 @@ let Loading = ({ time, loading}) => {
             closable={false} 
             maskClosable={false}
         >
-            <Progress percent={precentValue} />
+            <Progress percent={precentValue} status={exception} />
             {/* <Progress type="circle" percent={precentValue} /> */}
         </Modal>
 		);

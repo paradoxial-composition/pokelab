@@ -21,8 +21,8 @@ let PokeDetails = ({pokeInfo}) => {
 								<p>{desc}</p>
 							</Col>
 							<Col span={24} >
-								<Tag color='orange'>{pokeInfo.pokeTypes[0].type.name}</Tag>
-								<Tag color='orange'>{pokeInfo.pokeTypes[1].type.name}</Tag>
+								<Tag color='orange'>{pokeInfo.types[0].type.name}</Tag>
+								<Tag color='orange'>{pokeInfo.types[1].type.name}</Tag>
 							</Col>
 						</Row>
 					</Col>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import {Row, Col, Layout, } from 'antd';
 
-import {getPokemons} from '../../redux/actions/pokemons';
+import {getPokemons, getPokemonCardInfo} from '../../redux/actions/pokemons';
 
 import PokeCard from '../PokeCard';
 import Loading from '../Loading';
@@ -12,15 +12,14 @@ const { Header, Content, Footer } = Layout;
 
 const PokeLayout = () => {
 	const dispatch = useDispatch()
-	const pokeData = useSelector(state => state.pokemons.pokemons)
+	const pokeCardData = useSelector(state => state.pokemons.pokemonCardInfo)
 	const loading = useSelector(state => state.pokemons.loading)
 	const error = useSelector(state => state.pokemons.error)
-	const timer = 2000;
 	
 	useEffect( () => {
 		dispatch(getPokemons())
 	}, [])
-	
+
 	return (
 		<React.Fragment>
 			<Header className="poke-header">
@@ -31,15 +30,15 @@ const PokeLayout = () => {
 			</Header>
 			<Content className="poke-content">
 				<Row justify="space-around" align="middle" gutter={[4,48]} >
-					{pokeData.map( (item, index) => (
+					{pokeCardData.map( (item, index) => (
 					<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
-						<PokeCard  pokeCardPayload={item} loading={loading}/>
+						<PokeCard  pokeInfo={item} loading={loading}/>
 					</Col>
 					))}
 				</Row>
 				
 				{loading &&
-				 <Loading time={timer} loading={loading}/>
+				 <Loading loading={loading} error={error}/>
 				}
 			</Content>
 			<Footer className="poke-footer">

@@ -8,41 +8,41 @@ const typeColors = {
 	fire: '#f50',
 	dragon: '#531dab'
 }
-const pokeInfo = {
-	id: '4',
-	name: 'Charmander',
-	pokeTypes: [
-		{
-			type: {
-				name: 'fire'
-			}
-		},
-		{
-			type: {
-				name: 'dragon'
-			}
-		}
-	],
-	abilities: [
-		{
-			ability: {
-				name:"blaze",
-				is_hidden:false,
-			}
-		}
-	],
-	weight:85,
-	height: 6,
-	sprites: {
-		front_default:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-		other: {
-			["official-artwork"] : {
-				front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
-			}
-		}
-	}
-}
-let PokeCard = ({loading}) => {
+// const pokeInfo = {
+// 	id: '4',
+// 	name: 'Charmander',
+// 	pokeTypes: [
+// 		{
+// 			type: {
+// 				name: 'fire'
+// 			}
+// 		},
+// 		{
+// 			type: {
+// 				name: 'dragon'
+// 			}
+// 		}
+// 	],
+// 	abilities: [
+// 		{
+// 			ability: {
+// 				name:"blaze",
+// 				is_hidden:false,
+// 			}
+// 		}
+// 	],
+// 	weight:85,
+// 	height: 6,
+// 	sprites: {
+// 		front_default:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+// 		other: {
+// 			["official-artwork"] : {
+// 				front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+// 			}
+// 		}
+// 	}
+// }
+let PokeCard = ({pokeInfo, loading}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
 	let lpad = (value, padding) => {
 		var zeroes = new Array(padding+1).join("0");
@@ -60,10 +60,10 @@ let PokeCard = ({loading}) => {
 					alt={pokeInfo.pokeName}/>}
 				onClick={() => {setIsModalVisible(true)}}
 			>
-				<span>{'#'+ lpad(pokeInfo.pokeId, 3)}</span>
+				<span>{'#'+ lpad(pokeInfo.id, 3)}</span>
 				<Meta title={pokeInfo.name}/>
 				
-				{pokeInfo.pokeTypes.map((item, index) => (
+				{pokeInfo.types.map((item, index) => (
 						<Tag className="poke-tag" key={index} color={typeColors[item.type.name]}>{item.type.name}</Tag>
 					))}
 			</Card>

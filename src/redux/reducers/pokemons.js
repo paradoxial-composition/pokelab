@@ -2,6 +2,7 @@ import * as type from '../types';
 
 const initialState = {
   pokemons: [],
+  pokemonCardInfo: [],
   loading: false,
   error: null
 }
@@ -16,8 +17,13 @@ export default function pokemons(state = initialState, action){
       case type.GET_POKEMONS_SUCCESS:
       return {
         ...state,
-        loading: false,
         pokemons: action.payload
+      }
+      case type.GET_POKEMON_CARD_INFO_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        pokemonCardInfo:[...state.pokemonCardInfo, ...action.payload] 
       }
       case type.GET_POKEMONS_FAILED:
       return {
