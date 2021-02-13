@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Progress, Modal} from 'antd';
+import {Progress, Modal, Row, Col} from 'antd';
 
 let Loading = ({ loading, error}) => {
     let [precentValue, setPercentValue] = useState(0)
@@ -27,6 +27,15 @@ let Loading = ({ loading, error}) => {
             closable={false} 
             maskClosable={false}
         >
+            <Row justify="space-around" align="middle" >
+                <Col>
+                    <img 
+                        src="https://64.media.tumblr.com/dd3f6857ecc417bfbea89bb8ed37a5f7/tumblr_ox6e6kF3HG1sox2ufo1_400.gifv"
+                        alt="Loading .."
+                        height="50px"
+                    />
+                </Col>
+            </Row>
             <Progress percent={precentValue} status={exception} />
             {/* <Progress type="circle" percent={precentValue} /> */}
         </Modal>

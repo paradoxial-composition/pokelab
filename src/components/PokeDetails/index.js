@@ -4,8 +4,10 @@ import { Row, Col, Image, Card, Tag } from 'antd';
 
 const desc = "Obviously prefers\nhot places. When\nit rains, steam\fis said to spout\nfrom the tip of\nits tail."
 
+const colorTypes = require('../../assets/types.json');
+
 let PokeDetails = ({pokeInfo}) => {
-	
+
 	return (
 			<React.Fragment>
 				<Row gutter={[4,8]}>
@@ -21,8 +23,9 @@ let PokeDetails = ({pokeInfo}) => {
 								<p>{desc}</p>
 							</Col>
 							<Col span={24} >
-								<Tag color='orange'>{pokeInfo.types[0].type.name}</Tag>
-								<Tag color='orange'>{pokeInfo.types[1].type.name}</Tag>
+							{pokeInfo.types.map( (item, index) => (
+								<Tag className="poke-tag" key={index} color={colorTypes[item.type.name]}>{item.type.name}</Tag>
+							))}
 							</Col>
 						</Row>
 					</Col>

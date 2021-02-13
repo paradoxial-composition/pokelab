@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import {Row, Col, Layout, } from 'antd';
 
-import {getPokemons, getPokemonCardInfo} from '../../redux/actions/pokemons';
+import {getPokemons} from '../../redux/actions/pokemons';
 
 import PokeCard from '../PokeCard';
 import Loading from '../Loading';
@@ -43,18 +43,7 @@ const PokeLayout = () => {
 						<PokeCard  pokeInfo={item} loading={loading}/>
 					</Col>
 					))}
-				</Row>
-				{loading && <Row justify="space-around" align="middle" >
-					<Col xs={24}>
-						<img 
-							src="https://64.media.tumblr.com/dd3f6857ecc417bfbea89bb8ed37a5f7/tumblr_ox6e6kF3HG1sox2ufo1_400.gifv"
-							alt="Loading .."
-							height="50px"
-						/>
-					</Col>
-				</Row>}
-				
-				
+				</Row>				
 				{loading &&
 				 <Loading loading={loading} error={error}/>
 				}

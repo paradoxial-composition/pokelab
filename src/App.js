@@ -1,4 +1,5 @@
 import './App.css';
+import './assets/scss/global.scss'
 
 import PokeLayout from './components/PokeLayout';
 

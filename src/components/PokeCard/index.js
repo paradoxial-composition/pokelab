@@ -4,10 +4,7 @@ import { Card, Tag,  Modal } from 'antd';
 import PokeDetails from '../PokeDetails';
 
 const { Meta } = Card;
-const typeColors = {
-	fire: '#f50',
-	dragon: '#531dab'
-}
+const colorTypes = require('../../assets/types.json');
 // const pokeInfo = {
 // 	id: '4',
 // 	name: 'Charmander',
@@ -64,7 +61,7 @@ let PokeCard = ({pokeInfo, loading}) => {
 				<Meta title={pokeInfo.name}/>
 				
 				{pokeInfo.types.map((item, index) => (
-						<Tag className="poke-tag" key={index} color={typeColors[item.type.name]}>{item.type.name}</Tag>
+						<Tag className="poke-tag" key={index} color={colorTypes[item.type.name]}>{item.type.name}</Tag>
 					))}
 			</Card>
 			<Modal
