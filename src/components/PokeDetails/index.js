@@ -1,8 +1,7 @@
 import React from 'react';
 import './PokeDetails.scss';
 import { Row, Col, Image, Card, Tag } from 'antd';
-
-const desc = "Obviously prefers\nhot places. When\nit rains, steam\fis said to spout\nfrom the tip of\nits tail."
+import helpers from '../../assets/helpers';
 
 const colorTypes = require('../../assets/types.json');
 
@@ -11,26 +10,25 @@ let PokeDetails = ({pokeInfo}) => {
 	return (
 			<React.Fragment>
 				<Row gutter={[4,8]}>
-					<Col xs={24} md={6}>
+					<Col xs={24}>
 						<Image style={{ margin: 'auto' }} src={pokeInfo.sprites.other['official-artwork'].front_default}/>
 					</Col>
-					<Col xs={24} md={18}>
+					<Col xs={24}>
 						<Row justify="space-around" align="middle">
-							<Col span={24} >
-								{'#'+ pokeInfo.id + ' ' + pokeInfo.name}
+							<Col >
+								<span>{'#'+ helpers.lpad(pokeInfo.id, 3) + ' ' + pokeInfo.name}</span>
+								
 							</Col>
-							<Col span={24} >
-								<p>{desc}</p>
-							</Col>
-							<Col span={24} >
+							<Col >
 							{pokeInfo.types.map( (item, index) => (
-								<Tag className="poke-tag" key={index} color={colorTypes[item.type.name]}>{item.type.name}</Tag>
+								<Tag className="poke-tag" key={index} color={colorTypes[item.type.name].tag}>{item.type.name}</Tag>
 							))}
 							</Col>
 						</Row>
 					</Col>
 					<Col span={24}>
-						<Card style={{ width: 300, margin: 'auto' }}>
+						<Card className="poke-card-details" 
+						 bodyStyle={{background: 'url('+ colorTypes[pokeInfo.types[0].type.name].background +')', backgroundSize: 'cover', borderRadius: '25px'}}>
 							<Row justify="space-around" align="middle" gutter={[8,8]}>
 								<Col span={12} >
 									{/* pokeInfo.sprites.other.other["official-artwork"].front_default */}
@@ -41,13 +39,13 @@ let PokeDetails = ({pokeInfo}) => {
 									/>
 								</Col>
 								<Col span={12} >
-									Ability: {pokeInfo.abilities[0].ability.name}
+									<span>Ability: {pokeInfo.abilities[0].ability.name}</span>
 								</Col>
 								<Col span={12} >
-									Weight: {pokeInfo.weight + ' g'}
+									<span>Weight: {pokeInfo.weight + ' g'}</span>
 								</Col>
 								<Col span={12} >
-									Height: {pokeInfo.height + ' dm'}
+									<span>Height: {pokeInfo.height + ' dm'}</span>
 								</Col>
 							</Row>
 						</Card>

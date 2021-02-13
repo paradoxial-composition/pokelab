@@ -1,20 +1,74 @@
 {
-    "normal": "#b9b9a6",
-    "water": "#688ff0",
-    "electric": "#f8d02f",
-    "fighting": "#c03028",
-    "ground": "#e0c068",
-    "psychic": "#f85888",
-    "rock": "#b9a038",
-    "dark": "#705848",
-    "steel": "#b8b8d0",
-    "fire": "#f0802f",
-    "grass": "#78c850",
-    "ice": "#98d8d8",
-    "poison": "#a040a1",
-    "flying": "#a890f0",
-    "bug": "#a8b820",
-    "ghost": "#705898",
-    "dragon": "#7038f8",
-    "fairy": "#f0b6bc"
+    "normal": {
+        "tag" : "#b9b9a6",
+        "background": "https://cdn.bulbagarden.net/upload/4/48/Amie_Normal_Wallpaper.png"
+    },
+    "water": {
+        "tag" : "#688ff0",
+        "background": "https://cdn.bulbagarden.net/upload/9/98/Amie_Water_Wallpaper.png"
+    },
+    "electric": {
+        "tag" : "#f8d02f",
+        "background": "https://cdn.bulbagarden.net/upload/6/62/Amie_Electric_Wallpaper.png"
+    },
+    "fighting": {
+        "tag" : "#c03028",
+        "background": "https://cdn.bulbagarden.net/upload/a/a4/Amie_Fighting_Wallpaper.png"
+    },
+    "ground": {
+        "tag" : "#e0c068",
+        "background": "https://cdn.bulbagarden.net/upload/3/34/Amie_Ground_Wallpaper.png"
+    },
+    "psychic": {
+        "tag" : "#f85888",
+        "background": "https://cdn.bulbagarden.net/upload/d/d8/Amie_Psychic_Wallpaper.png"
+    },
+    "rock": {
+        "tag" : "#b9a038",
+        "background": "https://cdn.bulbagarden.net/upload/3/35/Amie_Rock_Wallpaper.png"
+    },
+    "dark": {
+        "tag" : "#705848",
+        "background": "https://cdn.bulbagarden.net/upload/9/93/Amie_Dark_Wallpaper.png"
+    },
+    "steel": {
+        "tag" : "#b8b8d0",
+        "background": "https://cdn.bulbagarden.net/upload/3/36/Amie_Steel_Wallpaper.png"
+    },
+    "fire": {
+        "tag" : "#f0802f",
+        "background": "https://cdn.bulbagarden.net/upload/2/24/Amie_Fire_Wallpaper.png"
+    },
+    "grass": {
+        "tag" : "#78c850",
+        "background": "https://cdn.bulbagarden.net/upload/f/f2/Amie_Grass_Wallpaper.png"
+    },
+    "ice": {
+        "tag" : "#98d8d8",
+        "background": "https://cdn.bulbagarden.net/upload/b/b5/Amie_Ice_Wallpaper.png"
+    },
+    "poison": {
+        "tag" : "#a040a1",
+        "background": "https://cdn.bulbagarden.net/upload/1/1a/Amie_Poison_Wallpaper.png"
+    },
+    "flying": {
+        "tag" : "#a890f0",
+        "background": "https://cdn.bulbagarden.net/upload/b/b1/Amie_Flying_Wallpaper.png"
+    },
+    "bug": {
+        "tag" : "#a8b820",
+        "background": "https://cdn.bulbagarden.net/upload/9/95/Amie_Bug_Wallpaper.png"
+    },
+    "ghost": {
+        "tag" : "#705898",
+        "background": "https://cdn.bulbagarden.net/upload/6/61/Amie_Ghost_Wallpaper.png"
+    },
+    "dragon": {
+        "tag" : "#7038f8",
+        "background": "https://cdn.bulbagarden.net/upload/e/ed/Amie_Dragon_Wallpaper.png"
+    },
+    "fairy": {
+        "tag" : "#f0b6bc",
+        "background": "https://cdn.bulbagarden.net/upload/2/23/Amie_Fairy_Wallpaper.png"
+    }
 }

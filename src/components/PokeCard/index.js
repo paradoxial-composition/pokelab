@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './PokeCard.scss';
+import helpers from '../../assets/helpers';
 import { Card, Tag,  Modal } from 'antd';
 import PokeDetails from '../PokeDetails';
 
@@ -41,10 +42,6 @@ const colorTypes = require('../../assets/types.json');
 // }
 let PokeCard = ({pokeInfo, loading}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
-	let lpad = (value, padding) => {
-		var zeroes = new Array(padding+1).join("0");
-		return (zeroes + value).slice(-padding);
-	}
 	
 	return (
 		<React.Fragment>
@@ -56,12 +53,13 @@ let PokeCard = ({pokeInfo, loading}) => {
 					src={(loading) ? 'https://i.pinimg.com/originals/02/c7/05/02c70572482476ba3ec8c4962f883705.png' : pokeInfo.sprites.other['official-artwork'].front_default} 
 					alt={pokeInfo.pokeName}/>}
 				onClick={() => {setIsModalVisible(true)}}
+				bodyStyle={{background: 'url('+ colorTypes[pokeInfo.types[0].type.name].background +')', backgroundSize: 'cover'}}
 			>
-				<span>{'#'+ lpad(pokeInfo.id, 3)}</span>
+				{'#'+ helpers.lpad(pokeInfo.id, 3)}
 				<Meta title={pokeInfo.name}/>
 				
 				{pokeInfo.types.map((item, index) => (
-						<Tag className="poke-tag" key={index} color={colorTypes[item.type.name]}>{item.type.name}</Tag>
+						<Tag className="poke-tag" key={index} color={colorTypes[item.type.name].tag}>{item.type.name}</Tag>
 					))}
 			</Card>
 			<Modal
@@ -70,6 +68,7 @@ let PokeCard = ({pokeInfo, loading}) => {
 				closable={false} 
 				maskClosable={true}
 				onCancel={() => {setIsModalVisible(false)}}
+				bodyStyle={{borderRadius: '25px'}}
 			>
 				<PokeDetails pokeInfo={pokeInfo}/>
 			</Modal>
