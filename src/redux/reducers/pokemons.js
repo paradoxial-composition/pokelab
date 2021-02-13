@@ -2,6 +2,7 @@ import * as type from '../types';
 
 const initialState = {
   pokemons: [],
+  
   types: [],
   pokemonCardInfo: [],
   loading: false,

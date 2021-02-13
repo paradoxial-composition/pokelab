@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import {Row, Col, Layout} from 'antd';
 import {getPokemons} from '../../redux/actions/pokemons';
@@ -18,14 +18,14 @@ const PokeLayout = () => {
 	const error = useSelector(state => state.pokemons.error)
 	
 	useEffect( () => {
-		dispatch(getPokemons({size: 0}))
+		dispatch(getPokemons({limit: 0}))
 	}, [])
 
 	window.onscroll = () => {
 		let scrollPosition = window.innerHeight + window.scrollY
 		let scrollHeight = document.documentElement.scrollHeight
 		if(scrollPosition == scrollHeight) {
-			dispatch(getPokemons({size: pokeCardData.length}))
+			dispatch(getPokemons({limit: pokeCardData.length}))
 		}
 	}
 

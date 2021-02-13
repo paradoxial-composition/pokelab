@@ -18,8 +18,8 @@ function* fetchPokemons (action) {
     // or just ones that are of some type, a type in which url is specified in the filterUrl parameter
     // Becase both api calls have the same result and will follow the same process
 
-    if(action.payload.size != undefined) {
-      pokemons = yield call(Api.getPokemons, action.payload.size)
+    if(action.payload.limit != undefined) {
+      pokemons = yield call(Api.getPokemons, action.payload.limit)
       yield put(getPokemonsSuccess(pokemons.results))
       const pokeCardData = yield all(pokemons.results.map( poke => call(Api.getPokemonCardData, poke.name)));
       yield put(getPokemonCardInfoSuccess(pokeCardData))
@@ -28,16 +28,10 @@ function* fetchPokemons (action) {
     }
 
     if(action.payload.filterUrl) {
-      let filteredPokemons = []
       pokemons = yield call(Api.getFilteredByType, action.payload.filterUrl)
+      const filteredPokemons = pokemons.pokemon.slice(0, 20).map( pokemon => pokemon.pokemon)
+      console.log(filteredPokemons)
 
-      // This api is realy ... something
-      Object.keys(pokemons.pokemon).forEach( key => {
-        if(key < 70) {
-          filteredPokemons.push(pokemons.pokemon[key].pokemon)
-        }
-      })
-      
       yield put(clearPokemons())
       yield put(getPokemonsSuccess(filteredPokemons))
       const pokeCardData = yield all(filteredPokemons.map( poke => call(Api.getPokemonCardData, poke.name)));
