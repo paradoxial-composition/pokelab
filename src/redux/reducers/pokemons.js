@@ -17,7 +17,7 @@ export default function pokemons(state = initialState, action){
       return {
         ...state,
         loading: false,
-        pokemons: action.pokemons
+        pokemons: action.payload
       }
       case type.GET_POKEMONS_FAILED:
       return {

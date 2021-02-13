@@ -1,8 +1,7 @@
  import * as type from '../types';
 
- export function getPokemons(pokemons) {
-     return {
-        type: type.GET_POKEMONS_REQUESTED,
-        payload: pokemons
-    }
- }
+ export const  getPokemons = () => ({type: type.GET_POKEMONS_REQUESTED})
+
+ export const getPokemonsSuccess = (pokemons) => ({type: type.GET_POKEMONS_SUCCESS, payload: pokemons});
+
+ export const getPokemonsFailure = (errorMessage) => ({type: type.GET_POKEMONS_FAILED, payload: errorMessage})

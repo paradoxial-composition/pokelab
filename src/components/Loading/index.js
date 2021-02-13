@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Progress, Modal} from 'antd';
 
-let Loading = ({time, loading}) => {
+let Loading = ({ time, loading}) => {
     let [precentValue, setPercentValue] = useState(0)
     useEffect( () => {
         let intervalRef = setTimeout(() => {

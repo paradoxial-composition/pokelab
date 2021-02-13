@@ -2,7 +2,9 @@ import React from 'react';
 import './PokeDetails.scss';
 import { Row, Col, Image, Card, Tag } from 'antd';
 
-let PokeDetails = ({pokeInfo, desc}) => {
+const desc = "Obviously prefers\nhot places. When\nit rains, steam\fis said to spout\nfrom the tip of\nits tail."
+
+let PokeDetails = ({pokeInfo}) => {
 	
 	return (
 			<React.Fragment>

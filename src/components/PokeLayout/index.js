@@ -1,21 +1,26 @@
-import React from 'react';
-import './PokeLayout.scss';
+import React, { useEffect } from 'react';
+import {useDispatch, useSelector } from 'react-redux';
+import {Row, Col, Layout, } from 'antd';
+
+import {getPokemons} from '../../redux/actions/pokemons';
+
 import PokeCard from '../PokeCard';
-import Loading from '../Loading/Loading';
-import {Row, Col, Layout, Modal} from 'antd';
+import Loading from '../Loading';
+import './PokeLayout.scss';
 
-const {Header, Content, Footer} = Layout;
+const { Header, Content, Footer } = Layout;
 
-let PokeLayout = ({pokeData, loading, timer}) => {
+const PokeLayout = () => {
+	const dispatch = useDispatch()
+	const pokeData = useSelector(state => state.pokemons.pokemons)
+	const loading = useSelector(state => state.pokemons.loading)
+	const error = useSelector(state => state.pokemons.error)
+	const timer = 2000;
 	
-	let Pokecards = []
-	pokeData.map( (item, index) => {
-		Pokecards.push(
-			<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
-				<PokeCard  pokeCardPayload={item} loading={loading}/>
-			</Col>
-		)
-	})
+	useEffect( () => {
+		dispatch(getPokemons())
+	}, [])
+	
 	return (
 		<React.Fragment>
 			<Header className="poke-header">
@@ -25,13 +30,16 @@ let PokeLayout = ({pokeData, loading, timer}) => {
 				/>
 			</Header>
 			<Content className="poke-content">
-				
 				<Row justify="space-around" align="middle" gutter={[4,48]} >
-					{Pokecards}
+					{pokeData.map( (item, index) => (
+					<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
+						<PokeCard  pokeCardPayload={item} loading={loading}/>
+					</Col>
+					))}
 				</Row>
 				
 				{loading &&
-				<Loading time={timer} loading={loading}/>
+				 <Loading time={timer} loading={loading}/>
 				}
 			</Content>
 			<Footer className="poke-footer">
