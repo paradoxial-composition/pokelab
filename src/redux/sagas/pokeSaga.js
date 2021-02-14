@@ -13,30 +13,19 @@ function* fetchPokemons (action) {
   let pokeCardData
   let pokemons
   let types
-  try{
-    // Depending on need expressed by the parametre passed we might chose weather to fetch all pokemons
-    // or just ones that are of some type, a type in which url is specified in the filterUrl parameter
-    // Becase both api calls have the same result and will follow the same process
+  try{ 
+    // get first pokemon's data (name and url)
+    pokemons = yield call(Api.getPokemons, action.payload.offset)
 
-    if(action.payload.offset != undefined) {
-      pokemons = yield call(Api.getPokemons, action.payload.offset)
-      if (action.payload.withClear) {
-        yield put(clearPokemons()) // refresh the pokeCardInfoArray
-      }
-      pokeCardData= yield all(pokemons.results.map( poke => call(Api.getPokemonCardData, poke.name)));
-
-      types = yield call(Api.getTypes)
+    if (action.payload.withClear) { // clear if need to display all after filtering
+      yield put(clearPokemons())
     }
-
-    if(action.payload.filterUrl) {
-      pokemons = yield call(Api.getFilteredByType, action.payload.filterUrl)
-      const filteredPokemons = pokemons.pokemon.slice(0, 20).map( pokemon => pokemon.pokemon)
-      yield put(clearPokemons()) // refresh the pokeCardInfoArray
-      pokeCardData = yield all(filteredPokemons.map( poke => call(Api.getPokemonCardData, poke.name)));
-      
-    }
-    
+    // get each pokemon's data (atributes, type, sprites etc ..), and then storing them in the state
+    pokeCardData= yield all(pokemons.results.map( poke => call(Api.getPokemonData, poke.name)));
     yield put(getPokemonCardInfoSuccess(pokeCardData))
+
+    // get pokemon types to fill filter's options, and then storing them in the state
+    types = yield call(Api.getTypes)
     yield put(getTypesSuccess(types.results))   
     
   } catch (e) {

@@ -14,6 +14,11 @@ export default function pokemons(state = initialState, action){
         ...state,
         loading: true
       }
+    case type.GET_FILTERED_POKEMONS_REQUESTED:
+      return {
+        ...state,
+        loading: true
+      }
     case type.GET_TYPES_SUCCESS:
       return {
         ...state,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import {getPokemons} from '../../redux/actions/pokemons';
+import {filterPokemons, getPokemons} from '../../redux/actions/pokemons';
 
 import './filter.scss'
 import {Affix, Select} from 'antd';
@@ -16,7 +16,7 @@ const Filter = () => {
         if(value === 'clear') {
             dispatch(getPokemons({offset: 0, withClear: true})) 
         } else {
-            dispatch(getPokemons({filterUrl: value})) 
+            dispatch(filterPokemons(value)) 
         }
     }
     

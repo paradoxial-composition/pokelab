@@ -19,7 +19,7 @@ export default {
         }).then(response => response.json())
             .catch((error) => {throw error})
     },
-    getPokemonCardData(name){
+    getPokemonData(name){
         return fetch(apiUrl + 'pokemon/' + name, {
             method: 'GET',
             headers: {
