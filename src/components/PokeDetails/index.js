@@ -1,14 +1,27 @@
 import React from 'react';
 import './PokeDetails.scss';
-import { Row, Col, Image, Card, Tag } from 'antd';
+import { Row, Col, Image, Card, Tag, Button } from 'antd';
+
+import {useDispatch } from 'react-redux';
+import {storeSelectedPokemon} from '../../redux/actions/pokemons';
 import helpers from '../../assets/helpers';
 
 const colorTypes = require('../../assets/types.json');
 
 let PokeDetails = ({pokeInfo}) => {
-
+	const dispatch = useDispatch()
+	let onClickMore = () => {
+		dispatch(storeSelectedPokemon(pokeInfo));
+	}
 	return (
 			<React.Fragment>
+				<Row>
+					<Col xs={24}>
+						<Button onClick={onClickMore} className="poke-more-details" type="primary">
+							More Info
+						</Button>
+					</Col>
+				</Row>
 				<Row gutter={[4,8]} className="poke-details-wrapper">
 					<Col xs={24}>
 						<Image style={{ margin: 'auto' }} src={pokeInfo.sprites.other['official-artwork'].front_default}/>

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import {Row, Col, Layout} from 'antd';
+import {Layout} from 'antd';
 import {getPokemons} from '../../redux/actions/pokemons';
 
-import PokeCard from '../PokeCard';
+
 import Filter from '../Filter';
 import Loading from '../Loading';
+import PokeDisplay from '../PokeDisplay';
 import './PokeLayout.scss';
 
 const { Header, Content, Footer } = Layout;
-
 
 const PokeLayout = () => {
 	const dispatch = useDispatch()
@@ -39,13 +39,7 @@ const PokeLayout = () => {
 			</Header>
 			<Content className="poke-content">
 				<Filter />
-				<Row justify="space-around" align="middle" gutter={[4,48]} >
-					{pokeCardData.map( (item, index) => (
-					<Col key={index} className="gutter-row" xs={24} md={12} lg={8}>
-						<PokeCard  pokeInfo={item} loading={loading}/>
-					</Col>
-					))}
-				</Row>				
+				<PokeDisplay pokeCardData={pokeCardData} loading={loading}/>
 				{loading &&
 				 <Loading loading={loading} error={error}/>
 				}
