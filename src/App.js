@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import './assets/scss/global.scss'
+import { BrowserRouter } from 'react-router-dom';
+
+import PokeLayout from './components/PokeLayout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{background: 'url(https://thumbs.dreamstime.com/b/dark-chrome-black-gear-background-texture-vector-illustration-eps-71328250.jpg)'}}>
+        <BrowserRouter>
+          <PokeLayout />
+        </BrowserRouter>
     </div>
   );
 }

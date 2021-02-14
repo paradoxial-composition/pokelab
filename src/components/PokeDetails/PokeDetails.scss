@@ -1,0 +1,37 @@
+.poke-details-wrapper{
+    .poke-card-details {
+        text-align: center;
+        border-radius: 25px;
+        box-shadow: 10px 5px 5px #bfbfbf;
+    }
+    span {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .poke-tag{
+        font-size: 17px;
+        padding: 8px;
+    }
+}
+.poke-more-details-button {
+    width: 111%;
+    position: absolute;
+    left: -25px;
+    height: 25px;
+    top: -27px;
+    border-radius: 25px 25px 0 0;
+    border: 1px solid black;
+    font-size: 21px;
+    line-height: 1px;
+    color: black;
+    background: url('https://images.assetsdelivery.com/compings_v2/cobalt/cobalt1411/cobalt141100054.jpg');
+
+    &:hover {
+        color: black;
+        background: url('https://www.nexusinw.com/wp-content/uploads/2017/08/Shiny-Silver-Background.jpg');
+    }
+    &:focus {
+        color: black;
+        background: url('https://www.nexusinw.com/wp-content/uploads/2017/08/Shiny-Silver-Background.jpg');
+    }
+}
