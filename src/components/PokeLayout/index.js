@@ -3,10 +3,8 @@ import {useDispatch, useSelector } from 'react-redux';
 import {Layout} from 'antd';
 import {getPokemons} from '../../redux/actions/pokemons';
 
+import RouterView from '../../router/RouterView';
 
-import Filter from '../Filter';
-import Loading from '../Loading';
-import PokeDisplay from '../PokeDisplay';
 import './PokeLayout.scss';
 
 const { Header, Content, Footer } = Layout;
@@ -14,8 +12,7 @@ const { Header, Content, Footer } = Layout;
 const PokeLayout = () => {
 	const dispatch = useDispatch()
 	const pokeCardData = useSelector(state => state.pokemons.pokemonCardInfo)
-	const loading = useSelector(state => state.pokemons.loading)
-	const error = useSelector(state => state.pokemons.error)
+
 	
 	useEffect( () => {
 		dispatch(getPokemons({offset: 0}))
@@ -38,11 +35,7 @@ const PokeLayout = () => {
 				/>
 			</Header>
 			<Content className="poke-content">
-				<Filter />
-				<PokeDisplay pokeCardData={pokeCardData} loading={loading}/>
-				{loading &&
-				 <Loading loading={loading} error={error}/>
-				}
+				<RouterView />
 			</Content>
 			<Footer className="poke-footer">
 				<img 

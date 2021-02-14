@@ -40,7 +40,7 @@ const colorTypes = require('../../assets/types.json');
 // 		}
 // 	}
 // }
-let PokeCard = ({pokeInfo, loading}) => {
+let PokeCard = ({pokeInfo, loading, history}) => {
 	let [isModalVisible, setIsModalVisible] = useState(false);
 	
 	return (
@@ -70,7 +70,7 @@ let PokeCard = ({pokeInfo, loading}) => {
 				onCancel={() => {setIsModalVisible(false)}}
 				bodyStyle={{borderRadius: '25px'}}
 			>
-				<PokeDetails pokeInfo={pokeInfo}/>
+				<PokeDetails history={history} pokeInfo={pokeInfo}/>
 			</Modal>
 		</React.Fragment>
 		);

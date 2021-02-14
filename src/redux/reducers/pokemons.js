@@ -3,7 +3,6 @@ import * as type from '../types';
 const initialState = {
   types: [],
   pokemonCardInfo: [],
-  seletedPokemon: null,
   loading: true,
   error: null
 }
@@ -36,11 +35,6 @@ export default function pokemons(state = initialState, action){
         ...state,
         loading: false,
         error: action.message
-      }
-    case type.PUT_SELECTED_POKEMON:
-      return {
-        ...state,
-        seletedPokemon: action.payload
       }
     case type.CLEAR_POKEMONS:
       return {
