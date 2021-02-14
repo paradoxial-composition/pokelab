@@ -11,7 +11,7 @@ let PokeDetails = ({pokeInfo, history}) => {
 		<React.Fragment>
 			<Row>
 				<Col xs={24}>
-					<Button onClick={() => {history.push(`/${pokeInfo.name}`)}} className="poke-more-details" type="primary">
+					<Button onClick={() => {history.push(`/${pokeInfo.name}`)}} className="poke-more-details-button" type="primary">
 						More Info
 					</Button>
 				</Col>
